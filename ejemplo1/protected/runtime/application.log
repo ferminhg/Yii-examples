@@ -1,0 +1,84 @@
+2014/12/27 13:18:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "page/about".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('page/about')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ejemplo1/index.php/page/about/
+---
+2014/12/27 13:19:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page/about')
+#7 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/ejemplo1/index.php/site/page/about/
+---
+2014/12/27 13:19:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page/about')
+#7 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/ejemplo1/index.php/site/page/about
+---
+2014/12/27 13:19:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "page/about".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('page/about')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ejemplo1/index.php/page/about
+---
+2014/12/27 13:19:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "page".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('page')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ejemplo1/index.php/page
+---
+2014/12/27 13:19:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "page".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('page')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ejemplo1/index.php/page/
+---
+2014/12/27 13:19:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page/about')
+#7 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/ejemplo1/index.php/site/page/about
+---
+2014/12/27 13:25:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "aasdfasdf".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php:483
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CController.php(270): CController->missingAction('aasdfasdf')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(282): CController->run('aasdfasdf')
+#2 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('site/aasdfasdf')
+#3 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ejemplo1/site/aasdfasdf
+---

@@ -1,0 +1,7 @@
+
+RewriteEngine on
+# Don't perform redirects for files and directories that exis
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# For everything else, redirect to index.php:
+RewriteRule ^(.*)$ index.php/$1
