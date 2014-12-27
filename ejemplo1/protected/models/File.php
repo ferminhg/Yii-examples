@@ -31,14 +31,26 @@ class File extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, name, type, size, date_entered', 'required'),
-			array('user_id, size', 'length', 'max'=>10),
+			// name, type, size are required (sort of come from the user)
+			array('name, type, size', 'required'),
+			// description is optional; must be filtered
+			// and set to NULL when empty:
+			array('description', 'filter', 'filter'=>'strip_tags'),
+			array('description', 'default', 'value'=>NULL),
+			// Maximum length on the name:
 			array('name', 'length', 'max'=>80),
-			array('type', 'length', 'max'=>45),
-			array('description, date_updated', 'safe'),
+			// Type must be of an appropriate kind:
+			array('type', 'validateFileType'),
+			// Set the date_entered to NOW():
+			array('date_entered', 'default',
+			    'value'=>new CDbExpression('NOW()'), 'on'=>'insert'),
+			// Set the date_updated to NOW():
+			array('date_updated', 'default',
+			    'value'=>new CDbExpression('NOW()'), 'on'=>'update'),
 			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, name, type, size, description, date_entered, date_updated', 'safe', 'on'=>'search'),
+			// Please remove those attributes that should not be searched
+			array('id, user_id, name, type, size, description, date_enter
+			    date_updated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,13 +72,14 @@ class File extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
-			'name' => 'Name',
-			'type' => 'Type',
-			'size' => 'Size',
-			'description' => 'Description',
-			'date_entered' => 'Date Entered',
-			'date_updated' => 'Date Updated',
+	        'user_id' => 'Uploaded By',
+	        'name' => 'File Name',
+	        'type' => 'File Type',
+	        'size' => 'File Size',
+	        'description' => 'Description',
+	        'date_entered' => 'Date Entered',
+	        'date_updated' => 'Date Updated',
+
 		);
 	}
 
@@ -101,6 +114,16 @@ class File extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function validateFileType($attr, $params) {
+	    // Allow PDFs and Word docs:
+	    $allowed = array('application/pdf', 'application/msword')
+	    // Make sure this is an allowed type:
+	    if (!in_array($this->type, $allowed)) {
+	        $this->addError('type',
+	        'You can only upload PDF files or Word docs.');
+	    }
+	} // End of validateFileType() method.
 
 	/**
 	 * Returns the static model of the specified AR class.

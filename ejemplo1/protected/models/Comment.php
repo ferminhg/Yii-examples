@@ -33,6 +33,16 @@ class Comment extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, page_id, comment, date_entered', 'safe', 'on'=>'search'),
+
+			// Required attributes (by the user):
+			array('comment', 'required'),
+			// Must be in related tables:
+			array('user_id, page_id', 'exist'),
+			// Strip tags from the comments:
+			array('comment', 'filter', 'filter'=>'strip_tags'),
+			// Set the date_entered to NOW():
+			array('date_entered', 'default',
+			    'value'=>new CDbExpression('NOW()'), 'on'=>'insert'),
 		);
 	}
 

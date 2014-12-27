@@ -82,3 +82,11 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/ejemplo1/site/aasdfasdf
 ---
+2014/12/27 14:25:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /Users/muken/proyectos/yii/yii-1.1.16.bca042/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Users/muken/proyectos/yii/Yii-examples/ejemplo1/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ejemplo1/login
+---
