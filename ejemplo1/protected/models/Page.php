@@ -32,8 +32,6 @@ class Page extends CActiveRecord
 		return array(
 			// Only the title is required from the user:
 			array('title', 'required'),
-			// User must exist in the related table:
-			array('user_id', 'exist'),
 			// Live needs to be Boolean; default 0:
 			array('live', 'boolean'),
 			array('live', 'default', 'value'=>0),
@@ -62,6 +60,10 @@ class Page extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+	        'comments' => array(self::HAS_MANY, 'Comment', 'page_id'),
+	        'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'files' => array(self::MANY_MANY, 'File',
+	            			'page_has_file(page_id, file_id)'),
 		);
 	}
 
@@ -110,6 +112,13 @@ class Page extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	protected function beforeValidate() {
+	    if(empty($this->user_id)) { // Set to current user:
+	        $this->user_id = Yii::app()->user->id;
+		}
+	    return parent::beforeValidate();
 	}
 
 	/**

@@ -69,6 +69,9 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+	        'comments' => array(self::HAS_MANY, 'Comment', 'user_id'),
+	        'files' => array(self::HAS_MANY, 'File', 'user_id'),
+	        'pages' => array(self::HAS_MANY, 'Page', 'user_id'),
 		);
 	}
 

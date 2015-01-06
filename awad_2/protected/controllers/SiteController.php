@@ -29,9 +29,7 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$num = 23;
-		//pasar variables a la vista
-		$this->render('index', array('num' => $num));
+		$this->render('index');
 	}
 
 	/**
