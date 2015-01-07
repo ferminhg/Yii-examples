@@ -19,9 +19,8 @@ class IssueController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-			'projectContext + create', //check to ensure valid project context
+			'accessControl', // perform access control for CRUD operations	
+			'projectContext + create index admin', //perform a check to ensure valid project context
 		);
 	}
 
@@ -69,7 +68,7 @@ class IssueController extends Controller
 	public function actionCreate()
 	{
 		$model=new Issue;
-
+		$model->project_id = $this->_project->id;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -93,7 +92,7 @@ class IssueController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$this->_project = $model->project;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -128,7 +127,14 @@ class IssueController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Issue');
+		$dataProvider=new CActiveDataProvider('Issue', array(
+            'criteria'=>array(
+                'condition'=>'project_id=:projectId',
+                'params'=>array(':projectId'=>$this->_project->id),
+             ),
+		));
+
+		// $dataProvider=new CActiveDataProvider('Issue');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -143,6 +149,8 @@ class IssueController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Issue']))
 			$model->attributes=$_GET['Issue'];
+
+		$model->project_id = $this->_project->id;
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -213,4 +221,12 @@ exist.');
         //complete the running of other filters and execute the requested action
         $filterChain->run();
    	}
+
+   	/**
+     * Returns the project model instance to which this issue belongs
+     */
+	public function getProject()
+	{
+		return $this->_project;
+	}
 }

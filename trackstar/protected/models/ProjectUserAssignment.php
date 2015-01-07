@@ -1,25 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "tbl_project".
+ * This is the model class for table "tbl_project_user_assignment".
  *
- * The followings are the available columns in table 'tbl_project':
- * @property integer $id
- * @property string $name
- * @property string $description
+ * The followings are the available columns in table 'tbl_project_user_assignment':
+ * @property integer $project_id
+ * @property integer $user_id
  * @property string $create_time
  * @property integer $create_user_id
  * @property string $update_time
  * @property integer $update_user_id
  */
-class Project extends CActiveRecord
+class ProjectUserAssignment extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_project';
+		return 'tbl_project_user_assignment';
 	}
 
 	/**
@@ -30,14 +29,12 @@ class Project extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>128),
-			array('description, create_time, update_time', 'safe'),
+			array('project_id, user_id', 'required'),
+			array('project_id, user_id, create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
+			array('create_time, update_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
-
-			array('name, description', 'required'),
+			array('project_id, user_id, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,8 +46,6 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-               'issues' => array(self::HAS_MANY, 'Issue', 'project_id'),
-               'users' => array(self::MANY_MANY, 'User', 'tbl_project_user_assignment(project_id, user_id)'),
 		);
 	}
 
@@ -60,9 +55,8 @@ class Project extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'description' => 'Description',
+			'project_id' => 'Project',
+			'user_id' => 'User',
 			'create_time' => 'Create Time',
 			'create_user_id' => 'Create User',
 			'update_time' => 'Update Time',
@@ -88,9 +82,8 @@ class Project extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
+		$criteria->compare('project_id',$this->project_id);
+		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('create_user_id',$this->create_user_id);
 		$criteria->compare('update_time',$this->update_time,true);
@@ -105,16 +98,10 @@ class Project extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Project the static model class
+	 * @return ProjectUserAssignment the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-
-	public function getUserOptions()
-	{
-		$usersArray = CHtml::listData($this->users, 'id', 'username');
-		return $usersArray;
 	}
 }

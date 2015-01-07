@@ -13,7 +13,11 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
-)); ?>
+)); 
+
+// var_dump($this->getProject()->getUserOptions());
+
+?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -32,58 +36,31 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'project_id'); ?>
-		<?php echo $form->textField($model,'project_id'); ?>
-		<?php echo $form->error($model,'project_id'); ?>
+		<?php echo $form->hiddenField($model,'project_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type_id'); ?>
-		<?php echo $form->dropDownList($model,'type_id', $model->getTypeOptions());?>
+		<?php echo $form->dropDownList($model,'type_id', $model->getTypeOptions()); ?>
 		<?php echo $form->error($model,'type_id'); ?>
-
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status_id'); ?>
-		<?php echo $form->dropDownList($model,'status_id', $model->getStatusOptions());?>
+		<?php echo $form->dropDownList($model,'status_id', $model->getStatusOptions()); ?>
 		<?php echo $form->error($model,'status_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'owner_id'); ?>
-		<?php echo $form->textField($model,'owner_id'); ?>
+		<?php echo $form->dropDownList($model,'owner_id', $this->getProject()->getUserOptions()); ?>
 		<?php echo $form->error($model,'owner_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'requester_id'); ?>
-		<?php echo $form->textField($model,'requester_id'); ?>
+		<?php echo $form->dropDownList($model,'requester_id', $this->getProject()->getUserOptions()); ?>
 		<?php echo $form->error($model,'requester_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time'); ?>
-		<?php echo $form->error($model,'create_time'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_user_id'); ?>
-		<?php echo $form->textField($model,'create_user_id'); ?>
-		<?php echo $form->error($model,'create_user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_time'); ?>
-		<?php echo $form->textField($model,'update_time'); ?>
-		<?php echo $form->error($model,'update_time'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_user_id'); ?>
-		<?php echo $form->textField($model,'update_user_id'); ?>
-		<?php echo $form->error($model,'update_user_id'); ?>
 	</div>
 
 	<div class="row buttons">
